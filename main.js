@@ -80,8 +80,8 @@ let resultat = nombres.filter(nombre => nombre > 10);
 
 console.log(resultat); // [12, 20]*/
 
-function filtrer(Tableau){
-    
+function filtrer(Tableau, condition){
+   //la condition doit elle être passée en paramètre? 
 }
 
 //Fonction qui retourne la factorielle d'un nombre donné 3!=3*2*1
@@ -96,12 +96,29 @@ function factorielle(nombre){
 //fonction qui vérifie si un nombre est premier ou non
 //Un nombre premier est un nombre entier supérieur à 1 qui possède exactement deux diviseurs : 1 et lui même
 function NbPremier(nombre){
-    
+    var nbPrem=""
+    var verif=false
+    if(nombre.toFixed(0)>1){
+        for(var cpt=2; cpt<10; cpt++){
+            if((nombre.toFixed(0))%cpt===0 && (nombre.toFixed(0))!=cpt){
+                return `${nombre} n'est pas un nombre premier`
+            }
+        }
+    }
+    return `${nombre} est un nombre premier`
 }
 
 //fonction suite de Fibonacci
-function SuiteFibonacci(nombre){
-    
+// on commence avec 0,1. 
+// Puis chaque nouveau nombre est obtenu en additionnant les deux nombres précédents.
+function SuiteFibonacci(nbTerme){
+    var Suite=[0,1]
+    var cpt=2
+    while(cpt<nbTerme){
+        Suite.push(Suite[cpt-1]+Suite[cpt-2])
+        cpt++
+    }
+    return Suite
 }
 
 console.log(InverseChaine("Josiane"))
@@ -110,4 +127,6 @@ console.log(Majuscule("   merli dort maintenent au travail "))
 console.log(MaxMinTableau([10,52,6,3,30]))
 console.log(SommeNb([10,52,6,3,30]))
 console.log(factorielle(7))
+console.log(NbPremier(21))
+console.log(SuiteFibonacci(7))
 
