@@ -17,8 +17,6 @@ function NombreCaractere(chaine){
         NbrCaract++
         }
     }
-    
-    //return chaine.length
     return NbrCaract
 }
 
@@ -71,62 +69,61 @@ function SommeNb(tableau){
 }
 
 //Fonction qui filtre les éléments d'un tableau en fonction d'une condition donnée
-/*Bien sûr. L'idée de "filtrer les éléments d'un tableau en fonction d'une condition
-donnée" est simplement de parcourir un tableau et ne conserver que les éléments qui
-respectent une règle.
- exemple: let nombres = [3, 8, 12, 5, 20];
-
-let resultat = nombres.filter(nombre => nombre > 10);
-
-console.log(resultat); // [12, 20]*/
-
-function filtrer(Tableau, condition){
-   //la condition doit elle être passée en paramètre? 
+function filtrer(Tableau){
+    var TableauFiltre=[]
+    if(Array.isArray(Tableau) && Tableau.length>0){
+        TableauFiltre = Tableau.filter(nombre => nombre >= 10)
+    }
+    return TableauFiltre
 }
 
-//Fonction qui retourne la factorielle d'un nombre donné 3!=3*2*1
+//Fonction qui retourne la factorielle d'un nombre donné Exemple: 3!=3*2*1
 function factorielle(nombre){
-    var resultat=1
-    for(var cpt=nombre; cpt>1; cpt--){
-        resultat=resultat*cpt
+    if(typeof nombre==="number"){
+        var resultat=1
+        for(var cpt=nombre; cpt>1; cpt--){
+            resultat=resultat*cpt
+        }
+        return resultat
     }
-    return resultat
+    else{
+        return "Il ne s'agit pas d'un nombre"
+    }
 }
 
 //fonction qui vérifie si un nombre est premier ou non
-//Un nombre premier est un nombre entier supérieur à 1 qui possède exactement deux diviseurs : 1 et lui même
 function NbPremier(nombre){
-    var nbPrem=""
-    var verif=false
-    if(nombre.toFixed(0)>1){
-        for(var cpt=2; cpt<10; cpt++){
-            if((nombre.toFixed(0))%cpt===0 && (nombre.toFixed(0))!=cpt){
-                return `${nombre} n'est pas un nombre premier`
+    if(typeof nombre==="number"){
+        var nbPrem=""
+        var verif=false
+        if(nombre.toFixed(0)>1){
+            for(var cpt=2; cpt<10; cpt++){
+                if((nombre.toFixed(0))%cpt===0 && (nombre.toFixed(0))!=cpt){
+                    return `${nombre} n'est pas un nombre premier`
+                }
             }
         }
+        return `${nombre} est un nombre premier`
     }
-    return `${nombre} est un nombre premier`
+    else{
+        return "Il ne s'agit pas d'un nombre"
+    }
 }
 
 //fonction suite de Fibonacci
-// on commence avec 0,1. 
-// Puis chaque nouveau nombre est obtenu en additionnant les deux nombres précédents.
 function SuiteFibonacci(nbTerme){
-    var Suite=[0,1]
-    var cpt=2
-    while(cpt<nbTerme){
-        Suite.push(Suite[cpt-1]+Suite[cpt-2])
-        cpt++
+    if(typeof nbTerme==="number"){
+        var Suite=[0,1]
+        var cpt=2
+        while(cpt<nbTerme){
+            Suite.push(Suite[cpt-1]+Suite[cpt-2])
+            cpt++
+        }
+        return Suite
     }
-    return Suite
+    else{
+        return "Il ne s'agit pas d'un nombre"
+    }    
 }
 
-console.log(InverseChaine("Josiane"))
-console.log(NombreCaractere("Josiane"))
-console.log(Majuscule("   merli dort maintenent au travail "))
-console.log(MaxMinTableau([10,52,6,3,30]))
-console.log(SommeNb([10,52,6,3,30]))
-console.log(factorielle(7))
-console.log(NbPremier(21))
-console.log(SuiteFibonacci(7))
 
